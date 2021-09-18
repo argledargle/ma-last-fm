@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import { Form } from './components/Form'
+import styled from 'styled-components'
+import { Results } from './components/Results'
 
-function App() {
+const RootDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`
+
+function App () {
+
+  const [searchResults, setSearchResults] = React.useState(null)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <RootDiv className='App'>
+      <h1>ma-last-fm</h1>
+      <h2>An app for searching last-fm</h2>
+      <p>Type an artist name below to get started</p>
+      <Form callback={setSearchResults} />
+      {searchResults !== null ? <Results content={searchResults} /> : ''}
+    </RootDiv>
+  )
 }
 
-export default App;
+export default App
