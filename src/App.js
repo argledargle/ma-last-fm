@@ -13,7 +13,6 @@ const RootDiv = styled.div`
 `
 
 function App () {
-
   const [searchResults, setSearchResults] = React.useState(null)
 
   return (
