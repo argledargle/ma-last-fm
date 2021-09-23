@@ -1,14 +1,18 @@
 import * as React from 'react'
-import getLastFmData from '../api/getLastFmData'
+import { searchArtists } from '../api/searchArtists'
 import { Button } from './Button'
 import { TextInput } from './TextInput'
 
-export const Form = ({ callback }) => {
+type FunctionProps = {
+  callback: any
+}
+
+export const Form = ({ callback }: FunctionProps) => {
   const [textValue, setTextValue] = React.useState('')
 
-  function handleSubmit (e) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    getLastFmData(textValue, callback)
+    searchArtists(textValue, callback)
   }
 
   return (
@@ -25,6 +29,7 @@ export const Form = ({ callback }) => {
         type={'submit'}
         name={'Click to search'}
         onClick={handleSubmit}
+        disabled={textValue === '' ? true : false}
       />
     </form>
   )
