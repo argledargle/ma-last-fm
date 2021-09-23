@@ -31,6 +31,6 @@ jobs:
           REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY}}
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
+          BRANCH: react-branch
           FOLDER: build
           CLEAN: true
